@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+
+
+:global(.swiper) {
+
+    margin: 0;
+    padding: 0;
+}
+
+
+
+@font-face {
+    font-family: 'playFair';
+    src: url('./assets/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf');
+}
+
+.perspective {
+    perspective: 1000px;
+    /* Creates the 3D space for rotation */
+}
+
+.backface-hidden {
+    backface-visibility: hidden;
+    /* Prevents mirrored text visibility */
+    transform-style: preserve-3d;
+    /* Ensures 3D rendering is preserved */
+}
+
+.rotate-y-180 {
+    transform: rotateY(180deg);
+    /* Rotates the card */
+}
+
+.transform-style-preserve-3d {
+    transform-style: preserve-3d;
+    /* Ensures nested children are in 3D */
+}
