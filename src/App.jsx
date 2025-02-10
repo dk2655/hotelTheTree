@@ -9,14 +9,15 @@ import Amenities from './components/Amenities';
 import Employees from './components/Employees';
 import Footer from './components/Footer';
 import BookNow from './components/BookNow';
+import PaymentReview from './components/PaymentReview';
 
 function Layout() {
   const location = useLocation(); // Get the current page URL
 
   return (
     <>
-      {/* Hide Navbar only on /book page */}
-      {location.pathname !== '/book' && <Nav />}
+      {/* Hide Navbar on /book and /payment pages */}
+      {location.pathname !== '/book' && location.pathname !== '/payment' && <Nav />}
 
       <Routes>
         <Route path="/" element={
@@ -31,6 +32,7 @@ function Layout() {
           </>
         } />
         <Route path="/book" element={<BookNow />} />
+        <Route path="/payment" element={<PaymentReview />} />
       </Routes>
     </>
   );

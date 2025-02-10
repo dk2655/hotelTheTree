@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 
 function BookNow() {
+    const navigate = useNavigate();
     const [formData, setFormdata] = useState({
         name: '',
         dob: '',
@@ -24,37 +25,35 @@ function BookNow() {
         { code: '+44', name: 'UK' },
         { code: '+61', name: 'Australia' },
         { code: '+81', name: 'Japan' },
-        // Add more country codes as needed
     ];
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormdata({ ...formData, [name]: value });
-    }
+    };
 
     return (
-        <div className="relative h-screen bg-gray-100 p-6">
-            {/* Back Button in the Top-Left Corner */}
+        <div className="relative min-h-screen bg-gray-100 p-6 pb-24">
+            {/* Back Button */}
             <Link to="/" className="absolute top-4 left-4">
                 <IoIosArrowDropleftCircle className="text-black w-8 h-8" />
             </Link>
 
-            {/* Page Content */}
-            <div className="mt-[5%] h-[10%] w-full flex flex-col items-center justify-center">
+            {/* Page Heading */}
+            <div className="mt-12 h-[10%] w-full flex flex-col items-center justify-center">
                 <h1 className="text-3xl md:text-6xl sm:text-2xl font-bold font-[playFair]">Personal Information</h1>
             </div>
 
-            <div className="mt-[8%] flex flex-col items-center justify-center space-y-6">
-                <form className="w-full max-w-md space-y-4">
+            {/* Form Section */}
+            <div className="mt-8 flex flex-col items-center justify-center">
+                <form className="w-full max-w-md space-y-6">
                     {fields.map((field) => (
-                        <div key={field.name} className="relative flex flex-col w-full mb-6">
-                            {/* Heading above the input */}
+                        <div key={field.name} className="relative flex flex-col w-full">
                             <h2 className="text-lg font-semibold mb-2">{field.label}</h2>
 
                             {/* Phone Input with Country Code */}
-                            {field.name === 'phone' && (
+                            {field.name === 'phone' ? (
                                 <div className="flex items-center border-2 border-gray-300 rounded-lg">
-                                    {/* Country Code Dropdown */}
                                     <select
                                         name="countryCode"
                                         value={formData.countryCode}
@@ -67,8 +66,6 @@ function BookNow() {
                                             </option>
                                         ))}
                                     </select>
-
-                                    {/* Phone Number Input */}
                                     <input
                                         id={field.name}
                                         type={field.type}
@@ -79,10 +76,7 @@ function BookNow() {
                                         className="px-4 py-2 w-full rounded-r-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                 </div>
-                            )}
-
-                            {/* Other Inputs */}
-                            {field.name !== 'phone' && (
+                            ) : (
                                 <input
                                     id={field.name}
                                     type={field.type}
@@ -97,7 +91,25 @@ function BookNow() {
                     ))}
                 </form>
             </div>
+
+            {/* Footer with Price and Continue Button */}
+            <div className="fixed bottom-0 left-0 w-full bg-[#995f0d]  text-white p-2 flex items-center justify-between ">
+                {/* Room Price */}
+                <div className="text-xl font-semibold">
+                    Room Price: ₹3,500
+                </div>
+
+                {/* Continue Button */}
+                <button
+                    onClick={() => navigate('/payment')}
+                    className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition"
+                >
+                    Continue
+                </button>
+            </div>
         </div>
+
+
     );
 }
 
