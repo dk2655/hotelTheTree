@@ -8,7 +8,7 @@ function About() {
 
 
     return (
-        <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-center lg:gap-12 p-6 lg:p-16">
+        <div id='about' className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-center lg:gap-12 p-6 lg:p-16">
             {/* Image Section */}
             <div className="flex-shrink-0">
                 <img className=" ml-[0%] h-[100%] w-[80%] lg:w-[400px] rounded-lg" src={aboutOne} alt="The Tree Hotel" />

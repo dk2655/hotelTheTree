@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 function Amenities() {
     return (
-        <div className='mt-[10%] px-[4%]'>
+        <div id='amenities' className='mt-[10%] px-[4%]'>
             <h2 className="text-[5vh] font-[playFair]">Luxury Amenities</h2>
             <h1 className="text-[7vh] mt-[2%]">
                 Our Best <span className="text-[#9d7e54] font-bold">Amenities</span>

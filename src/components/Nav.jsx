@@ -35,14 +35,13 @@ const Nav = () => {
                     {/* Logo */}
                     <h3 className={`text-[3vw] font-extrabold  ${isScrolled ? 'text-[#9d7e54]' : 'text-white'}`}>The Tree</h3>
 
-
                     {/* Navigation Links for larger screens */}
                     <div className="hidden md:flex">
                         <nav className="text-white flex gap-7">
-                            {["Home", "About", "Category", "Rooms", "Testimonials", "Contact"].map((link, index) => (
+                            {["Home", "About", "Rooms", "Amenities", "Employees", "Contact"].map((link, index) => (
                                 <a
                                     key={index}
-                                    href={`#${link.toLowerCase()}`}
+                                    href={`#${link.toLowerCase()}`}  // Correct link to scroll to the section with id="Amenities"
                                     className={`text-[3.5vh]  transition-all duration-300 shadow-md 
                                                hover:scale-110 hover:text-[5vh]  `}
                                     style={{ color: isScrolled ? '#9d7e54' : 'white' }}
@@ -76,12 +75,11 @@ const Nav = () => {
                 {/* Mobile Menu */}
                 {isOpen && (
                     <div className=" fixed inset-0 bg-transparent bg-opacity-70 backdrop-blur-md z-30 flex flex-col items-center justify-center gap-6">
-                        {["Home", "About", "Category", "Rooms", "Testimonials", "Contact"].map((link, index) => (
+                        {["Home", "About", "Rooms", "Amenities", "Employees", "Contact"].map((link, index) => (
                             <a
                                 key={index}
-                                href={`#${link.toLowerCase()}`}
-                                className="text-[5vw] text-white transition-all duration-300 shadow-md 
-                                          "
+                                href={`#${link.toLowerCase()}`} // Link to scroll to the respective section
+                                className="text-[5vw] text-white transition-all duration-300 shadow-md"
                                 style={{ color: 'white' }}
                                 onClick={() => setIsOpen(false)} // Close menu on click
                             >
@@ -91,6 +89,8 @@ const Nav = () => {
                     </div>
                 )}
             </div>
+
+
         </>
     );
 };

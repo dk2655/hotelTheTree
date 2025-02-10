@@ -9,7 +9,7 @@ import hero3 from '../assets/hotelPics/hero3.png';
 
 function Header() {
     return (
-        <div className='text-white relative w-full h-[100vh]'>
+        <div id='home' className='text-white relative w-full h-[100vh]'>
             {/* Swiper Carousel */}
             <Swiper
                 slidesPerView={1}

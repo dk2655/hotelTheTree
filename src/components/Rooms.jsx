@@ -3,9 +3,9 @@ import RoomCard from './RoomCard';
 import one from '../assets/hotelPics/one.jpg';
 import two from '../assets/hotelPics/two.jpg'
 
-function Rooms() {
+function Rooms(props) {
     return (
-        <div className="ml-[4%] space-y-2 sm:space-y-4">
+        <div id='rooms' className="rooms-section ml-[4%] space-y-2 sm:space-y-4">
             <h2 className="text-[5vh] font-[playFair] text-left">
                 Luxury Suites
             </h2>
@@ -18,7 +18,7 @@ function Rooms() {
                     frontImage={one}
                     backImage={two}
                     roomType="Deluxe"
-                    price="299/N"
+                    price={props.price}
                     features={[
                         'Daily Cleaning',
                         'Home Service',
@@ -32,7 +32,7 @@ function Rooms() {
                     frontImage={one}
                     backImage={two}
                     roomType="Super Deluxe"
-                    price="499/N"
+                    price={props.price}
                     features={[
                         'Daily Cleaning',
                         'Home Service',

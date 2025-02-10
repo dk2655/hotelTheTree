@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 
-function BookNow() {
+function BookNow(props) {
     const navigate = useNavigate();
     const [formData, setFormdata] = useState({
         name: '',
@@ -96,7 +96,7 @@ function BookNow() {
             <div className="fixed bottom-0 left-0 w-full bg-[#995f0d]  text-white p-2 flex items-center justify-between ">
                 {/* Room Price */}
                 <div className="text-xl font-semibold">
-                    Room Price: ₹3,500
+                    Room Price: {props.price}
                 </div>
 
                 {/* Continue Button */}

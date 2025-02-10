@@ -8,7 +8,7 @@ import emp3 from '../assets/hotelPics/emp3.jpg';
 
 function Employees() {
     return (
-        <div className='mt-[10%] px-[4%]'>
+        <div id='employees' className='mt-[10%] px-[4%]'>
             <h2 className="text-[5vh] font-[playFair]">Employees</h2>
             <h1 className="text-[7vh] mt-[2%]">
                 Our <span className="text-[#9d7e54] font-bold">Employees</span>

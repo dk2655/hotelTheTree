@@ -36,3 +36,7 @@
     transform-style: preserve-3d;
     /* Ensures nested children are in 3D */
 }
+
+html {
+    scroll-behavior: smooth;
+}
