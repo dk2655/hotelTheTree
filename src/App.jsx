@@ -11,6 +11,8 @@ import Footer from './components/Footer';
 import BookNow from './components/BookNow';
 import PaymentReview from './components/PaymentReview';
 
+
+
 function Layout() {
   const location = useLocation(); // Get the current page URL
 
@@ -31,6 +33,7 @@ function Layout() {
             <Footer />
           </>
         } />
+
         <Route path="/book" element={<BookNow />} />
         <Route path="/payment" element={<PaymentReview />} />
       </Routes>
