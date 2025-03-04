@@ -12,8 +12,10 @@
 
 @font-face {
     font-family: "Playfair Display";
-    src: url("/hotelTheTree/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype");
+    src: url("./assets/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype");
+    font-display: swap;
 }
+
 
 
 .perspective {
