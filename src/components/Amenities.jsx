@@ -35,10 +35,10 @@ function Amenities() {
                             <div className='flex items-center bg-transparent bg-opacity-80 p-6 rounded-xl'>
                                 {/* Image Section */}
                                 <div
-                                    className='-ml-[4%] w-[100%] h-[50vh] rounded-r-full bg-cover bg-center'
+                                    className='-ml-[4%] w-[100%] h-[54vh] rounded-r-full bg-cover bg-center'
                                     style={{ backgroundImage: `url(${amenity.image})` }}
                                 >
-                                    <h2 className='bg-transparent bg-opacity-10  text-white  text-[5vh] font-bold text-center  py-4 '>
+                                    <h2 className='bg-transparent bg-opacity-10  text-white  text-[4.5vh] md:text-[5vh] font-bold text-left md:text-center  md:py-4 py-28 '>
                                         {amenity.title}
                                     </h2>
                                 </div>
