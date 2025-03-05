@@ -17,9 +17,9 @@ function Layout() {
   const location = useLocation(); // Get the current URL
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div style={{ textAlign: 'center', padding: '50px' }}>Loading...</div>}>
       {/* Hide Navbar on /book and /payment pages */}
-      {location.pathname !== '/book' && location.pathname !== '/payment' && <Nav />}
+      {!['/book', '/payment'].includes(location.pathname) && <Nav />}
 
       <Routes>
         <Route path="/" element={
