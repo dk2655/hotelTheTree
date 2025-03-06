@@ -26,6 +26,15 @@ const Nav = () => {
         };
     }, []);
 
+    // Function to handle smooth scrolling
+    const handleScrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+        setIsOpen(false); // Close mobile menu after clicking a link
+    };
+
     return (
         <>
             {/* Navbar: Fixed to the top */}
@@ -40,15 +49,15 @@ const Nav = () => {
                     {/* Navigation Links for larger screens */}
                     <div className="hidden md:flex">
                         <nav className="text-white flex gap-7">
-                            {["Home", "About", "Rooms", "Amenities", "Employees", "Contact"].map((link, index) => (
-                                <a
+                            {["home", "about", "rooms", "amenities", "employees", "contact"].map((link, index) => (
+                                <button
                                     key={index}
-                                    href={`#${link.toLowerCase()}`} // Use anchor links
+                                    onClick={() => handleScrollToSection(link)} // Use onClick to scroll
                                     className={`text-[3.5vh] transition-all duration-300 shadow-md hover:scale-110 hover:text-[5vh]`}
                                     style={{ color: isScrolled ? '#9d7e54' : 'white' }}
                                 >
-                                    {link}
-                                </a>
+                                    {link.charAt(0).toUpperCase() + link.slice(1)} {/* Capitalize first letter */}
+                                </button>
                             ))}
                         </nav>
                     </div>
@@ -74,15 +83,14 @@ const Nav = () => {
                 {/* Mobile Menu */}
                 {isOpen && (
                     <div className="fixed inset-0 bg-transparent bg-opacity-70 backdrop-blur-md z-30 flex flex-col items-center justify-center gap-6">
-                        {["Home", "About", "Rooms", "Amenities", "Employees", "Contact"].map((link, index) => (
-                            <a
+                        {["home", "about", "rooms", "amenities", "employees", "contact"].map((link, index) => (
+                            <button
                                 key={index}
-                                href={`#${link.toLowerCase()}`} // Use anchor links
+                                onClick={() => handleScrollToSection(link)} // Use onClick to scroll
                                 className="text-[5vw] text-white transition-all duration-300 shadow-md"
-                                onClick={() => setIsOpen(false)} // Close menu on click
                             >
-                                {link}
-                            </a>
+                                {link.charAt(0).toUpperCase() + link.slice(1)} {/* Capitalize first letter */}
+                            </button>
                         ))}
                     </div>
                 )}
