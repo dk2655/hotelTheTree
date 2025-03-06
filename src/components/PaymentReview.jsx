@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import { Link } from 'react-router-dom';
-import one from '../assets/hotelPics/one.jpg';
+import one from '../assets/hotelPics/two.jpg';
 
 function PaymentReview() {
     const [startDate, setStartDate] = useState("");
@@ -26,7 +26,7 @@ function PaymentReview() {
                 {/* Room Info Section */}
                 <div className="flex items-center bg-white shadow-lg rounded-lg p-4 mt-8 w-full max-w-3xl mx-auto">
                     {/* Room Image */}
-                    <img src={one} alt="Room" className="w-32 h-32 rounded-lg object-cover" />
+                    <img src={two} alt="Room" className="w-32 h-32 rounded-lg object-cover" />
 
                     {/* Room Details */}
                     <div className="ml-4">
