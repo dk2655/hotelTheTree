@@ -33,6 +33,7 @@ function Layout() {
             <Footer />
           </>
         } />
+        <Route path="/home" element={<Header />} />
         <Route path="/book" element={<BookNow />} />
         <Route path="/payment" element={<PaymentReview />} />
       </Routes>
