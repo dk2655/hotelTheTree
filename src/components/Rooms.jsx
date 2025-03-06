@@ -1,6 +1,6 @@
 import React from 'react';
 import RoomCard from './RoomCard';
-import one from '../assets/hotelPics/one.jpg';
+
 import two from '../assets/hotelPics/two.jpg'
 
 function Rooms(props) {
