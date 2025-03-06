@@ -15,7 +15,7 @@ function Rooms(props) {
             <div className="flex flex-wrap justify-center gap-6 sm:gap-12 md:gap-16">
                 {/* Deluxe Room Card */}
                 <RoomCard
-                    frontImage={one}
+                    frontImage={two}
                     backImage={two}
                     roomType="Deluxe"
                     price={props.price}
@@ -29,7 +29,7 @@ function Rooms(props) {
 
                 {/* Super Deluxe Room Card */}
                 <RoomCard
-                    frontImage={one}
+                    frontImage={two}
                     backImage={two}
                     roomType="Super Deluxe"
                     price={props.price}
