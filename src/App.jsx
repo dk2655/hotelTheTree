@@ -17,7 +17,7 @@ function Layout() {
   const location = useLocation(); // Get the current URL
 
   return (
-    <Suspense fallback={<div style={{ textAlign: 'center', padding: '50px' }}>Loading...</div>}>
+    <Suspense fallback={<div style={{ textAlign: 'center', padding: '50px' }}>Your website is being loaded,Please wait...</div>}>
       {/* Hide Navbar on /book and /payment pages */}
       {!['/book', '/payment'].includes(location.pathname) && <Nav />}
 
@@ -33,7 +33,7 @@ function Layout() {
             <Footer />
           </>
         } />
-        <Route path="/home" element={<Header />} />
+        {/* <Route path="/home" element={<Header />} /> */}
         <Route path="/book" element={<BookNow />} />
         <Route path="/payment" element={<PaymentReview />} />
       </Routes>

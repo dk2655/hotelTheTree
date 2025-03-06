@@ -4,27 +4,27 @@ import { Link } from 'react-router-dom';
 
 const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     const togglebar = () => {
         setIsOpen(!isOpen);
     };
 
-    const [isScrolled, setIsScrolled] = useState(false)
-
     useEffect(() => {
-
         const handleScroll = () => {
             if (window.scrollY > 500) {
                 setIsScrolled(true);
-            }
-            else {
-                setIsScrolled(false)
+            } else {
+                setIsScrolled(false);
             }
         };
 
-        window.addEventListener('scroll', handleScroll)
+        window.addEventListener('scroll', handleScroll);
 
-    }, [])
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
         <>
@@ -33,7 +33,9 @@ const Nav = () => {
                 {/* Outer container for Nav */}
                 <div className="flex items-center justify-between px-[5%] py-4">
                     {/* Logo */}
-                    <h3 className={`text-[3vw] font-extrabold  ${isScrolled ? 'text-[#9d7e54]' : 'text-white'}`}>The Tree</h3>
+                    <h3 className={`text-[3vw] font-extrabold ${isScrolled ? 'text-[#9d7e54]' : 'text-white'}`}>
+                        The Tree
+                    </h3>
 
                     {/* Navigation Links for larger screens */}
                     <div className="hidden md:flex">
@@ -41,9 +43,8 @@ const Nav = () => {
                             {["Home", "About", "Rooms", "Amenities", "Employees", "Contact"].map((link, index) => (
                                 <a
                                     key={index}
-                                    href={`#${link.toLowerCase()}`}  // Correct link to scroll to the section with id="Amenities"
-                                    className={`text-[3.5vh]  transition-all duration-300 shadow-md 
-                                               hover:scale-110 hover:text-[5vh]  `}
+                                    href={`#${link.toLowerCase()}`} // Use anchor links
+                                    className={`text-[3.5vh] transition-all duration-300 shadow-md hover:scale-110 hover:text-[5vh]`}
                                     style={{ color: isScrolled ? '#9d7e54' : 'white' }}
                                 >
                                     {link}
@@ -56,9 +57,7 @@ const Nav = () => {
                     <div className="flex items-center gap-4">
                         <Link to="/book">
                             <button
-                                className="border border-dashed border-white px-[5%] py-[8%] whitespace-nowrap rounded-md bg-[#995f0d] 
-                                       text-white hover:bg-[#7d6139] hover:border-white transition-all duration-300 
-                                       shadow-lg transform hover:scale-110"
+                                className="border border-dashed border-white px-[5%] py-[8%] whitespace-nowrap rounded-md bg-[#995f0d] text-white hover:bg-[#7d6139] hover:border-white transition-all duration-300 shadow-lg transform hover:scale-110"
                             >
                                 Book Now
                             </button>
@@ -74,13 +73,12 @@ const Nav = () => {
 
                 {/* Mobile Menu */}
                 {isOpen && (
-                    <div className=" fixed inset-0 bg-transparent bg-opacity-70 backdrop-blur-md z-30 flex flex-col items-center justify-center gap-6">
+                    <div className="fixed inset-0 bg-transparent bg-opacity-70 backdrop-blur-md z-30 flex flex-col items-center justify-center gap-6">
                         {["Home", "About", "Rooms", "Amenities", "Employees", "Contact"].map((link, index) => (
                             <a
                                 key={index}
-                                href={`#${link.toLowerCase()}`} // Link to scroll to the respective section
+                                href={`#${link.toLowerCase()}`} // Use anchor links
                                 className="text-[5vw] text-white transition-all duration-300 shadow-md"
-                                style={{ color: 'white' }}
                                 onClick={() => setIsOpen(false)} // Close menu on click
                             >
                                 {link}
@@ -89,8 +87,6 @@ const Nav = () => {
                     </div>
                 )}
             </div>
-
-
         </>
     );
 };
