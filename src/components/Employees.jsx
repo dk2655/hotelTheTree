@@ -5,6 +5,7 @@ import { Autoplay } from 'swiper/modules';
 import emp1 from '../assets/hotelPics/emp1.jpg';
 import emp2 from '../assets/hotelPics/emp2.jpg';
 import emp3 from '../assets/hotelPics/emp3.jpg';
+import founder1 from '../assets/hotelPics/founder1'
 
 function Employees() {
     return (
@@ -23,7 +24,7 @@ function Employees() {
                     modules={[Autoplay]}
                     className='h-full w-full'
                 >
-                    {[{ image: emp1, name: 'Riya', designation: 'Sales Manager', desc: 'Elevate your fitness! Our state-of-the-art gym is equipped with the latest machines to keep you energized and in top shape.' },
+                    {[{ image: founder1, name: 'Riya', designation: 'Sales Manager', desc: 'Elevate your fitness! Our state-of-the-art gym is equipped with the latest machines to keep you energized and in top shape.' },
                     { image: emp2, name: 'John', designation: 'Marketing Head', desc: 'Dive into luxury! Our crystal-clear infinity pool offers a serene escape, perfect for relaxation and leisure under the sun.' },
                     { image: emp3, name: 'Catherine', designation: 'Chef', desc: 'Savor world-class flavors! Experience gourmet dining with exquisite dishes crafted by top chefs in a sophisticated ambiance.' }
                     ].map((employee, index) => (
