@@ -5,7 +5,7 @@ import { Autoplay } from 'swiper/modules';
 import emp1 from '../assets/hotelPics/emp1.jpg';
 import emp2 from '../assets/hotelPics/emp2.jpg';
 import emp3 from '../assets/hotelPics/emp3.jpg';
-import founder1 from '../assets/hotelPics/founder1.jpg'
+import founder1 from '../assets/hotelPics/founder1.png'
 
 function Employees() {
     return (
