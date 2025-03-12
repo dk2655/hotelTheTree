@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import room2 from '../assets/hotelPics/room2.jpg'
-import room1 from '../assets/hotelPics/room1.jpg'
+
 
 function PaymentReview() {
     const [startDate, setStartDate] = useState("");
