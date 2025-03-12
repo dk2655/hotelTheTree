@@ -69,7 +69,7 @@ function Header() {
                             backgroundImage: `url(${Reception})`, // Use the imported image
                         }}
                     >
-                        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/6 text-white text-center bg-transparent bg-opacity-10 backdrop-blur-xs '>
+                        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/6 text-white text-center  '>
                             <small data-swiper-parallax="-200" className='block text-lg'>Luxury Hotel & Restaurant</small>
                             <h2 data-swiper-parallax="-300" className='text-4xl font-extrabold'>
                                 Enjoy Your Dream Time with <br /> Luxury Experience

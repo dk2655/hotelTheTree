@@ -41,9 +41,9 @@ function Amenities() {
                                     className='-ml-[4%] w-[100%] h-[54vh] rounded-r-full bg-cover bg-center'
                                     style={{ backgroundImage: `url(${amenity.image})` }}
                                 >
-                                    <h2 className='bg-transparent bg-opacity-10 backdrop-blur-xs rounded-b-2xl text-white  
+                                    <h2 className='bg-transparent text-white backdrop-blur-xs object-cover py-[15%] md:py-[1%]
                                         text-[4.5vh] md:text-[5vh] font-bold text-left md:text-center  
-                                        py-10 sm:py-16 md:py-20 lg:py-24'>
+                                        '>
                                         {amenity.title}
                                     </h2>
 
