@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import aboutOne from '../assets/hotelPics/aboutOne.png';
+// import aboutOne from '../assets/hotelPics/aboutOne.png';
+import mergepic from '../assets/hotelPics/mergepic.png'
 
 
 function About() {
@@ -11,7 +12,7 @@ function About() {
         <div id='about' className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-center lg:gap-12 p-6 lg:p-16">
             {/* Image Section */}
             <div className="flex-shrink-0">
-                <img className=" ml-[0%] h-[100%] w-[80%] lg:w-[400px] rounded-lg" src={aboutOne} alt="The Tree Hotel" />
+                <img className="mt-[-38%] ml-[0%] h-[50vh] lg:h-[100vh] w-[500px] lg:w-[500px] rounded-lg" src={mergepic} alt="The Tree Hotel" />
             </div>
 
             {/* Text Section */}
@@ -32,8 +33,8 @@ function About() {
                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
                     {[
                         { title: 'Luxury Rooms', description: 'Spacious and elegant rooms with modern amenities.' },
-                        { title: 'Fine Dining', description: 'Experience gourmet cuisine crafted by top chefs.' },
-                        { title: 'Spa & Wellness', description: 'Relax and rejuvenate with our premium spa services.' },
+                        { title: 'Fine Dining', description: 'Experience multi cuisine crafted by top chefs.' },
+                        { title: 'Lush Green Garden', description: 'Relax and rejuvenate in our garden.' },
                     ].map((item, index) => (
                         <div
                             key={index}

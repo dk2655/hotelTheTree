@@ -16,22 +16,22 @@ function ServicesDesc() {
                 <Card
                     icon={MdRestaurantMenu} // Pass the component here
                     title="Dining Options"
-                    subheadings={['Cafe', 'Restaurant', 'Bar', 'Room Service']}
+                    subheadings={['Restaurant', 'Room Service']}
                 />
                 <Card
                     icon={MdRestaurantMenu} // Pass the component here
                     title="Dining Options"
-                    subheadings={['Cafe', 'Restaurant', 'Bar', 'Room Service']}
+                    subheadings={['Cafe', 'Room Service']}
                 />
                 <Card
                     icon={MdRestaurantMenu} // Pass the component here
                     title="Dining Options"
-                    subheadings={['Cafe', 'Restaurant', 'Bar', 'Room Service']}
+                    subheadings={['Cafe', 'Room Service']}
                 />
                 <Card
                     icon={MdRestaurantMenu} // Pass the component here
                     title="Dining Options"
-                    subheadings={['Cafe', 'Restaurant', 'Bar', 'Room Service']}
+                    subheadings={['Cafe', 'Room Service']}
                 />
             </div>
         </div>

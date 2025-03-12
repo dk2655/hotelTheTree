@@ -29,19 +29,18 @@ function Footer() {
                 <div>
                     <h3 className="text-xl font-semibold text-[#9d7e54] mb-2">Branch Locations</h3>
                     <ul className="space-y-2 text-white">
-                        <li>Mumbai, India</li>
-                        <li>Dubai, UAE</li>
-                        <li>London, UK</li>
-                        <li>New York, USA</li>
+                        <li>Pune, India</li>
+
                     </ul>
                 </div>
 
                 {/* Column 4: Contact Details */}
                 <div>
                     <h3 className="text-xl font-semibold text-[#9d7e54] mb-2">Contact Us</h3>
-                    <p><span className="font-bold">📍 Address:</span> 123 Luxury Lane, Mumbai, India</p>
+                    <p><span className="font-bold">📍 Address:</span> The Tree Hotel, Bhoirwadi,Phase-3, Near TCS Company,Hinjwadi,Pune-411057</p>
                     <p><span className="font-bold">📧 Email:</span> info@thetreehotel.com</p>
-                    <p><span className="font-bold">📞 Phone:</span> +91 98765 43210</p>
+                    <p><span className="font-bold">📞 Phone:</span> +91 91460-44999 </p>
+                    <p className="ml-21"> +91 91460-74999</p>
                 </div>
             </div>
 

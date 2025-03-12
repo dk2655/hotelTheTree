@@ -49,7 +49,7 @@ const Nav = () => {
                     {/* Navigation Links for larger screens */}
                     <div className="hidden md:flex">
                         <nav className="text-white flex gap-7">
-                            {["home", "about", "rooms", "amenities", "employees", "contact"].map((link, index) => (
+                            {["home", "about", "rooms", "amenities", "Founders", "contact"].map((link, index) => (
                                 <button
                                     key={index}
                                     onClick={() => handleScrollToSection(link)} // Use onClick to scroll
