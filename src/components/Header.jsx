@@ -35,7 +35,7 @@ function Header() {
                             backgroundImage: `url(${reception1})`, // Use the imported image
                         }}
                     >
-                        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#F2F2F2] text-center bg-transparent bg-opacity-10 backdrop-blur-xs '>
+                        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#F2F2F2] text-center bg-transparent  '>
                             <small data-swiper-parallax="-200" className='block text-lg'>Luxury Hotel & Restaurant</small>
                             <h2 data-swiper-parallax="-300" className='text-4xl font-extrabold'>
                                 Enjoy Your Dream Time with <br /> Luxury Experience
@@ -52,7 +52,7 @@ function Header() {
                             backgroundImage: `url(${Flower})`, // Use the imported image
                         }}
                     >
-                        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-center bg-transparent bg-opacity-10 backdrop-blur-xs '>
+                        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-center  '>
                             <small data-swiper-parallax="-200" className='block text-lg'>Exclusive Suites</small>
                             <h2 data-swiper-parallax="-300" className='text-4xl font-extrabold'>
                                 Enjoy Your Stay in the Best Deluxe Rooms <br /> With Exclusive Offers
