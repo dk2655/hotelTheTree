@@ -7,7 +7,7 @@ import founder1 from '../assets/hotelPics/founder1.png'
 
 function Employees() {
     return (
-        <div id='employees' className='mt-[10%] px-[4%]'>
+        <div id='founders' className='mt-[10%] px-[4%]'>
             <h2 className="text-[5vh] font-[playFair]">Founders</h2>
             <h1 className="text-[7vh] mt-[2%]">
                 The <span className="text-[#9d7e54] font-bold">Founders</span>

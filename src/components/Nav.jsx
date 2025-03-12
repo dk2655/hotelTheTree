@@ -83,7 +83,7 @@ const Nav = () => {
                 {/* Mobile Menu */}
                 {isOpen && (
                     <div className="fixed inset-0 bg-transparent bg-opacity-70 backdrop-blur-md z-30 flex flex-col items-center justify-center gap-6">
-                        {["home", "about", "rooms", "amenities", "employees", "contact"].map((link, index) => (
+                        {["home", "about", "rooms", "amenities", "Founders", "contact"].map((link, index) => (
                             <button
                                 key={index}
                                 onClick={() => handleScrollToSection(link)} // Use onClick to scroll
