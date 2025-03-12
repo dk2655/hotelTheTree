@@ -10,6 +10,9 @@ export default defineConfig({
   ],
   build: {
     rollupOptions: {
+      input: {
+        main: 'index.html', // Ensure favicon is included in the build
+      },
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
