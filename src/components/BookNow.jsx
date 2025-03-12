@@ -93,10 +93,10 @@ function BookNow(props) {
             </div>
 
             {/* Footer with Price and Continue Button */}
-            <div className="fixed bottom-0 left-0 w-full bg-[#995f0d]  text-white p-2 flex items-center justify-between ">
+            <div className="fixed bottom-0 left-0 w-full bg-[#003153]  text-white p-2 flex items-center justify-between ">
                 {/* Room Price */}
                 <div className="text-xl font-semibold">
-                    Room Price: {props.price}
+                    Room Price: 3500
                 </div>
 
                 {/* Continue Button */}

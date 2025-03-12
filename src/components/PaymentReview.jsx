@@ -117,7 +117,7 @@ function PaymentReview() {
             </div>
 
             {/* Separate Footer Section */}
-            <div className="w-full bg-[#995f0d] text-white py-4 px-6 flex items-center justify-between">
+            <div className="w-full bg-[#003153] text-white py-4 px-6 flex items-center justify-between">
                 {/* Room Price */}
                 <div className="text-xl font-semibold">
                     Room Price: ₹3,500
