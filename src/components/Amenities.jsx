@@ -31,8 +31,8 @@ function Amenities() {
                     className='h-full w-full'
                 >
                     {[{ image: temp2, title: 'Garden', desc: 'Elevate your fitness! Our state-of-the-art gym is equipped with the latest machines to keep you energized and in top shap' },
-                    { image: pool, title: 'Swimming Pool', desc: '  Dive into luxury! Our crystal-clear infinity pool offers a serene escape, perfect for relaxation and leisure under the sun.' },
-                    { image: restaurant, title: 'Restaurant', desc: 'Savor world-class flavors! Experience gourmet dining with exquisite dishes crafted by top chefs in a sophisticated ambiance.' }
+                    { image: pool, title: ' Pool', desc: '  Dive into luxury! Our crystal-clear infinity pool offers a serene escape, perfect for relaxation and leisure under the sun.' },
+                    { image: restaurant, title: 'Dining', desc: 'Savor world-class flavors! Experience gourmet dining with exquisite dishes crafted by top chefs in a sophisticated ambiance.' }
                     ].map((amenity, index) => (
                         <SwiperSlide key={index}>
                             <div className='flex items-center bg-transparent bg-opacity-80 p-6 rounded-xl '>
@@ -41,9 +41,12 @@ function Amenities() {
                                     className='-ml-[4%] w-[100%] h-[54vh] rounded-r-full bg-cover bg-center'
                                     style={{ backgroundImage: `url(${amenity.image})` }}
                                 >
-                                    <h2 className='bg-transparent bg-opacity-10 backdrop-blur-xs rounded-b-2xl text-white  text-[4.5vh] md:text-[5vh] font-bold text-left md:text-center  md:py-4 py-28 '>
+                                    <h2 className='bg-transparent bg-opacity-10 backdrop-blur-xs rounded-b-2xl text-white  
+                                        text-[4.5vh] md:text-[5vh] font-bold text-left md:text-center  
+                                        py-10 sm:py-16 md:py-20 lg:py-24'>
                                         {amenity.title}
                                     </h2>
+
                                 </div>
 
                                 {/* Text Section */}
