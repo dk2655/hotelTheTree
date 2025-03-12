@@ -87,7 +87,7 @@ const Nav = () => {
                             <button
                                 key={index}
                                 onClick={() => handleScrollToSection(link)} // Use onClick to scroll
-                                className="text-[5vw] text-white transition-all duration-300 shadow-md"
+                                className="text-[8vw] text-white bg-black/50 rounded-2xl transition-all duration-300 shadow-md"
                             >
                                 {link.charAt(0).toUpperCase() + link.slice(1)} {/* Capitalize first letter */}
                             </button>
