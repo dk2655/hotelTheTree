@@ -8,7 +8,7 @@ const About = lazy(() => import('./components/About'));
 const ServicesDesc = lazy(() => import('./components/ServicesDesc'));
 const Rooms = lazy(() => import('./components/Rooms'));
 const Amenities = lazy(() => import('./components/Amenities'));
-const Founders = lazy(() => import('./components/Founders'));
+// const Founders = lazy(() => import('./components/Founders'));
 const Footer = lazy(() => import('./components/Footer'));
 const BookNow = lazy(() => import('./components/BookNow'));
 const PaymentReview = lazy(() => import('./components/PaymentReview'));
@@ -29,7 +29,7 @@ function Layout() {
             <ServicesDesc />
             <Rooms />
             <Amenities />
-            <Founders />
+            {/* <Founders /> */}
             <Footer />
           </>
         } />
