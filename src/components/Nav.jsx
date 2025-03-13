@@ -49,7 +49,7 @@ const Nav = () => {
                     {/* Navigation Links for larger screens */}
                     <div className="hidden md:flex">
                         <nav className="text-white flex gap-7">
-                            {["home", "about", "rooms", "amenities", "founders", "contact"].map((link, index) => (
+                            {["home", "about", "rooms", "amenities", "contact"].map((link, index) => (
                                 <button
                                     key={index}
                                     onClick={() => handleScrollToSection(link)} // Use onClick to scroll
@@ -83,7 +83,7 @@ const Nav = () => {
                 {/* Mobile Menu */}
                 {isOpen && (
                     <div className="fixed inset-0 bg-transparent bg-opacity-70 backdrop-blur-md z-30 flex flex-col items-center justify-center gap-6">
-                        {["home", "about", "rooms", "amenities", "founders", "contact"].map((link, index) => (
+                        {["home", "about", "rooms", "amenities", "contact"].map((link, index) => (
                             <button
                                 key={index}
                                 onClick={() => handleScrollToSection(link)} // Use onClick to scroll
