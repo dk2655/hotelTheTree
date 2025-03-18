@@ -5,6 +5,8 @@ import room2 from '../assets/hotelPics/room2.jpg'
 
 
 function PaymentReview() {
+    const storedRoomType = localStorage.getItem("roomType") || "  Room type not selected";
+    const storedRoomPrice = localStorage.getItem("roomPrice") || 0;
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [adults, setAdults] = useState(1);
@@ -31,7 +33,7 @@ function PaymentReview() {
 
                     {/* Room Details */}
                     <div className="ml-4">
-                        <h2 className="text-xl font-semibold">Deluxe Room</h2>
+                        <h2 className="text-xl font-semibold">{storedRoomType}</h2>
                         <p className="text-gray-700">Hotel The Tree</p>
                         <p className="text-gray-500">Hinjewadi, Pune, India</p>
                     </div>
@@ -110,7 +112,7 @@ function PaymentReview() {
                     {/* Room Details */}
                     <div className="ml-4 text-3xl">
                         <h2 className="text-xl font-semibold">Total cost</h2>
-                        <p className="text-gray-700 font-bold">₹3500</p>
+                        <p className="text-gray-700 font-bold">₹{storedRoomPrice}</p>
 
                     </div>
                 </div>
@@ -120,7 +122,7 @@ function PaymentReview() {
             <div className="w-full bg-[#003153] text-white py-4 px-6 flex items-center justify-between">
                 {/* Room Price */}
                 <div className="text-xl font-semibold">
-                    Room Price: ₹3,500
+                    Room Price: ₹{storedRoomPrice}
                 </div>
 
                 {/* Make Payment Button */}

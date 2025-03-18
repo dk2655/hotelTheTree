@@ -10,6 +10,7 @@ function BookNow(props) {
         email: '',
         phone: '',
         countryCode: '+91', // Default country code for India
+        roomType: '',
     });
 
     const fields = [
@@ -27,11 +28,20 @@ function BookNow(props) {
         { code: '+81', name: 'Japan' },
     ];
 
+    const roomTypes = [
+        { type: 'Deluxe Room', price: 3500 },
+        { type: 'Semi-Deluxe Room', price: 2250 },
+    ];
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormdata({ ...formData, [name]: value });
     };
 
+    const getRoomPrice = () => {
+        const selectedRoom = roomTypes.find((room) => room.type === formData.roomType);
+        return selectedRoom ? selectedRoom.price : 'N/A';
+    }
     return (
         <div className="relative min-h-screen bg-gray-100 p-6 pb-24">
             {/* Back Button */}
@@ -89,27 +99,48 @@ function BookNow(props) {
                             )}
                         </div>
                     ))}
+
+                    {/* Room Type Dropdown */}
+                    <div className="relative flex flex-col w-full">
+                        <h2 className="text-lg font-semibold mb-2">Select Your Room</h2>
+                        <select
+                            name="roomType"
+                            value={formData.roomType}
+                            onChange={handleChange}
+                            className="px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+                            <option value="">Choose a room type</option>
+                            {roomTypes.map((room, index) => (
+                                <option key={index} value={room.type}>
+                                    {room.type}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                 </form>
             </div>
 
             {/* Footer with Price and Continue Button */}
-            <div className="fixed bottom-0 left-0 w-full bg-[#003153]  text-white p-2 flex items-center justify-between ">
+            <div className="fixed bottom-0 left-0 w-full bg-[#003153] text-white p-2 flex items-center justify-between">
                 {/* Room Price */}
                 <div className="text-xl font-semibold">
-                    Room Price: 3500
+                    Room Price:  ₹{getRoomPrice()}
                 </div>
 
                 {/* Continue Button */}
                 <button
-                    onClick={() => navigate('/payment')}
+                    onClick={() => {
+                        localStorage.setItem("roomType", formData.roomType);
+                        localStorage.setItem("roomPrice", formData.roomType === "Deluxe Room" ? 3500 : 2250);
+                        navigate('/payment')
+                    }}
                     className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition"
+                    disabled={!formData.roomType}
                 >
                     Continue
                 </button>
             </div>
         </div>
-
-
     );
 }
 
