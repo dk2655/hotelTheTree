@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const RoomCard = ({ frontImage, backImage, roomType, features }) => {
+
     const [isFlipped, setIsFlipped] = useState(false);
 
     const toggleCard = () => {
@@ -9,12 +10,12 @@ const RoomCard = ({ frontImage, backImage, roomType, features }) => {
     };
 
     // Correctly assign the price based on roomType
-    let price;
-    if (roomType === "Deluxe") {
-        price = 2000;  // Assign price for deluxe
-    } else if (roomType == "Super Deluxe") {
-        price = 4000;  // Assign price for other types
-    }
+    // let price;
+    // if (roomType === "Deluxe") {
+    //     price = { storedRoomPrice };  // Assign price for deluxe
+    // } else if (roomType == "Super Deluxe") {
+    //     price = 4000;  // Assign price for other types
+    // }
 
     return (
         <div className="relative w-[300px] h-[350px] lg:w-[350px] lg:h-[450px] perspective">
@@ -54,7 +55,7 @@ const RoomCard = ({ frontImage, backImage, roomType, features }) => {
                     <div className="absolute inset-4 flex flex-col items-center justify-between bg-transparent bg-opacity-20 backdrop-blur-md rounded-xl p-6 overflow-hidden border border-white border-opacity-10">
                         {/* Text Content */}
                         <div className="text-center space-y-4">
-                            <h3 className="text-white text-2xl font-bold">₹{price}</h3>  {/* Price with the correct value */}
+                            {/* <h3 className="text-white text-2xl font-bold">₹{storedRoomPrice}</h3>  Price with the correct value */}
                             <h2 className="text-white text-xl font-semibold">{roomType}</h2>
                             <ul className="text-white text-base space-y-2">
                                 {features.map((feature, index) => (
