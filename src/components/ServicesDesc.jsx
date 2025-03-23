@@ -20,18 +20,18 @@ function ServicesDesc() {
                 />
                 <Card
                     icon={MdRestaurantMenu} // Pass the component here
-                    title="Dining Options"
-                    subheadings={['Cafe', 'Room Service']}
+                    title="Garden"
+                    subheadings={['Lush Green Garden']}
                 />
                 <Card
                     icon={MdRestaurantMenu} // Pass the component here
-                    title="Dining Options"
-                    subheadings={['Cafe', 'Room Service']}
+                    title="In-Room & Comfort Services"
+                    subheadings={['In-Room Dining with Custom Menus']}
                 />
                 <Card
                     icon={MdRestaurantMenu} // Pass the component here
-                    title="Dining Options"
-                    subheadings={['Cafe', 'Room Service']}
+                    title="Digital & Smart Solutions"
+                    subheadings={['Fingerprint door locks', 'Smart key control']}
                 />
             </div>
         </div>

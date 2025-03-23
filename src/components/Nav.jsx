@@ -42,7 +42,7 @@ const Nav = () => {
                 {/* Outer container for Nav */}
                 <div className="flex items-center justify-between px-[5%] py-4">
                     {/* Logo */}
-                    <h3 className={`text-[3vw] font-extrabold ${isScrolled ? 'text-[#9d7e54]' : 'text-white'}`}>
+                    <h3 className={`text-[3vh] sm:text-[5vh] font-extrabold ${isScrolled ? 'text-[#935f14]' : 'text-white'}`}>
                         The Tree
                     </h3>
 
