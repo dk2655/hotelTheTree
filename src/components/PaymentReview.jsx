@@ -1,16 +1,40 @@
 import React, { useState } from 'react';
 import { IoIosArrowDropleftCircle } from "react-icons/io";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import room2 from '../assets/hotelPics/room2.jpg'
+import emailjs from '@emailjs/browser'
 
 
 function PaymentReview() {
     const storedRoomType = localStorage.getItem("roomType") || "  Room type not selected";
     const storedRoomPrice = localStorage.getItem("roomPrice") || 0;
-    const [startDate, setStartDate] = useState("");
-    const [endDate, setEndDate] = useState("");
-    const [adults, setAdults] = useState(1);
-    const [children, setChildren] = useState(0);
+    const storedUserName = localStorage.getItem("name") || "Guest";
+    const storedEmail = localStorage.getItem("email") || "guest@email.com";
+
+    const handlePayment = async () => {
+        const emailParams = {
+            name: storedUserName,
+            email: storedEmail,
+            roomType: storedRoomType,
+            price: storedRoomPrice,
+            hotelName: "Hotel The Tree",
+            location: "Hinjewadi, pune, India",
+        };
+
+        try {
+            await emailjs.send(
+                "service_229t579",
+                "template_5uwftjf",
+                { ...emailParams },
+                "qb4MJrPgzVN8h0_sX"
+            );
+
+            alert("Payment successful! Confirmation email sent")
+        } catch (error) {
+            console.error("Email sending failed:", error);
+            alert("Payment successful, but failed to send email.");
+        }
+    };
 
     return (
 
@@ -22,116 +46,55 @@ function PaymentReview() {
                 </Link>
 
                 {/* Page Title */}
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-[Playfair] text-center mt-16">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-[Playfair] text-center mt-20">
                     Payment & Booking Review
                 </h1>
 
                 {/* Room Info Section */}
-                <div className="flex items-center bg-white shadow-lg rounded-lg p-4 mt-8 w-full max-w-3xl mx-auto">
+                <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 mt-20 w-full max-w-3xl mx-auto">
                     {/* Room Image */}
-                    <img src={room2} alt="Room" className="w-32 h-32 rounded-lg object-cover" />
+                    <img src={room2} alt="Room" className="w-full h-32 rounded-lg object-cover " />
 
                     {/* Room Details */}
-                    <div className="ml-4">
-                        <h2 className="text-xl font-semibold">{storedRoomType}</h2>
-                        <p className="text-gray-700">Hotel The Tree</p>
-                        <p className="text-gray-500">Hinjewadi, Pune, India</p>
+                    <div className="mr-[50%] mt-6">
+                        <h2 className=" text-3xl font-semibold">{storedRoomType}</h2>
+                        <p className="text-gray-700 text-2xl">Hotel The Tree</p>
+                        <p className="text-gray-500 text-xl">Hinjewadi, Pune, India</p>
                     </div>
                 </div>
 
-                {/* Booking Details Section */}
-                <div className="mt-8 font-bold text-lg mx-auto w-full max-w-3xl">
-                    <h3>Your Booking</h3>
-                </div>
 
-                <div className="bg-white shadow-lg rounded-lg p-4 mt-2 w-full max-w-3xl mx-auto">
-                    {/* Booking Date Range */}
-                    <div className="flex flex-col mb-4">
-                        <label className="text-gray-600 font-semibold">From</label>
-                        <input
-                            type="date"
-                            value={startDate}
-                            onChange={(e) => setStartDate(e.target.value)}
-                            className="border border-gray-300 p-2 rounded-md focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
 
-                    <div className="flex flex-col mb-4">
-                        <label className="text-gray-600 font-semibold">To</label>
-                        <input
-                            type="date"
-                            value={endDate}
-                            onChange={(e) => setEndDate(e.target.value)}
-                            className="border border-gray-300 p-2 rounded-md focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
 
-                    {/* Guests Section */}
-                    <div className="mt-4">
-                        <h3 className="text-gray-800 font-bold">Guests</h3>
 
-                        <div className="flex justify-between mt-2">
-                            {/* Number of Adults */}
-                            <div className="flex flex-col">
-                                <label className="text-gray-600 font-semibold">Adults</label>
-                                <select
-                                    value={adults}
-                                    onChange={(e) => setAdults(e.target.value)}
-                                    className="border border-gray-300 p-2 rounded-md focus:ring-2 focus:ring-blue-500"
-                                >
-                                    {[...Array(6).keys()].map((num) => (
-                                        <option key={num + 1} value={num + 1}>
-                                            {num + 1}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-
-                            {/* Number of Children */}
-                            <div className="flex flex-col">
-                                <label className="text-gray-600 font-semibold">Children</label>
-                                <select
-                                    value={children}
-                                    onChange={(e) => setChildren(e.target.value)}
-                                    className="border border-gray-300 p-2 rounded-md focus:ring-2 focus:ring-blue-500"
-                                >
-                                    {[...Array(5).keys()].map((num) => (
-                                        <option key={num} value={num}>
-                                            {num}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="flex items-center bg-white shadow-lg rounded-lg p-4 mt-8 w-full max-w-3xl mx-auto">
+                <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 mt-12 w-full max-w-3xl mx-auto">
                     {/* Room Image */}
-                    <img src={room2} alt="Room" className="w-32 h-32 rounded-lg object-cover" />
+                    <img src={room2} alt="Room" className="w-full h-32 rounded-lg object-cover" />
 
                     {/* Room Details */}
-                    <div className="ml-4 text-3xl">
+                    <div className="mt-6 mr-[75%] text-3xl">
                         <h2 className="text-xl font-semibold">Total cost</h2>
                         <p className="text-gray-700 font-bold">₹{storedRoomPrice}</p>
 
                     </div>
                 </div>
-            </div>
+            </div >
 
             {/* Separate Footer Section */}
-            <div className="w-full bg-[#003153] text-white py-4 px-6 flex items-center justify-between">
+            < div className="w-full bg-[#003153] text-white py-4 px-6 flex items-center justify-between" >
                 {/* Room Price */}
-                <div className="text-xl font-semibold">
+                < div className="text-xl font-semibold" >
                     Room Price: ₹{storedRoomPrice}
-                </div>
+                </div >
 
                 {/* Make Payment Button */}
-                <button
+                < button
+                    onClick={handlePayment}
                     className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition"
                 >
                     Make Payment
-                </button>
-            </div>
+                </button >
+            </div >
         </>
 
     );
