@@ -10,6 +10,7 @@ export default defineConfig({
   ],
   build: {
     rollupOptions: {
+      external: ['@eamiljs/browser'],
       input: {
         main: 'index.html', // Ensure favicon is included in the build
       },
