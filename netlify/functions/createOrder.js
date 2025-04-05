@@ -31,7 +31,7 @@ export async function handler(event, context) {
             order_amount: amount,
             order_currency: "INR",
             order_note: roomType,
-            return_url: "http://localhost:5174/booking-success?order_id={order_id}",
+            return_url: "http://localhost:8888/booking-success?order_id={order_id}",
             notify_url: "https://hotelthetree.com/webhook"
         })
     });
