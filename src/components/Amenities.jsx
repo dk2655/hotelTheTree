@@ -6,7 +6,7 @@ import { Autoplay, Parallax } from 'swiper/modules';
 import temp1 from '../assets/hotelPics/temp1.jpg'
 import temp2 from '../assets/hotelPics/temp2.jpg'
 import dining from '../assets/hotelPics/dining.jpg'
-import rooms from '../assets/hotelPics/rooms.jpg'
+import room2 from '../assets/hotelPics/room2.jpg'
 
 import gym from '../assets/hotelPics/gym.jpg';
 import pool from '../assets/hotelPics/pool.jpg';
@@ -33,7 +33,7 @@ function Amenities() {
                     className='h-full w-full'
                 >
                     {[{ image: temp2, title: 'Garden', desc: 'Elevate your satay! Our hotel serene garden offers lush greeenery and tranquil seating areas.' },
-                    { image: rooms, title: ' Rooms', desc: '  Dive into luxury! Our Deluxe rooms a perfect place for relaxation and leisure in a city like pune!' },
+                    { image: room2, title: ' Rooms', desc: '  Dive into luxury! Our Deluxe rooms a perfect place for relaxation and leisure in a city like pune!' },
                     { image: dining, title: 'Dining', desc: 'Savor world-class flavors! Experience gourmet dining with exquisite dishes crafted by top chefs in a sophisticated ambiance.' }
                     ].map((amenity, index) => (
                         <SwiperSlide key={index}>
