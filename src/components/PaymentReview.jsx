@@ -10,7 +10,6 @@ function PaymentReview() {
     const storedRoomPrice = localStorage.getItem("roomPrice") || 0;
     const storedUserName = localStorage.getItem("name") || "Guest";
     const storedEmail = localStorage.getItem("email") || "guest@email.com";
-
     const handlePayment = async () => {
         const emailParams = {
             name: storedUserName,
@@ -18,23 +17,50 @@ function PaymentReview() {
             roomType: storedRoomType,
             price: storedRoomPrice,
             hotelName: "Hotel The Tree",
-            location: "Hinjewadi, pune, India",
+            location: "Hinjewadi, Pune, India",
         };
 
         try {
-            await emailjs.send(
-                "service_229t579",
-                "template_5uwftjf",
-                { ...emailParams },
-                "qb4MJrPgzVN8h0_sX"
-            );
+            // Step 1: Create payment link via Netlify function
+            const response = await fetch('/.netlify/functions/createPayment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: storedUserName,
+                    email: storedEmail,
 
-            alert("Payment successful! Confirmation email sent")
+                    roomType: storedRoomType,
+                    amount: storedRoomPrice
+                })
+            });
+
+            const result = await response.json();
+            console.log("Payment Link Response:", result);
+
+            if (result.payment_link || result.payment_link_url) {
+                // Optional: send email before redirect
+                await emailjs.send(
+                    "service_229t579",
+                    "template_5uwftjf",
+                    { ...emailParams },
+                    "qb4MJrPgzVN8h0_sX"
+                );
+
+                alert("Redirecting to payment...");
+                window.location.href = result.payment_link || result.payment_link_url;
+            } else {
+                alert("Payment link could not be generated.");
+                console.error(result);
+            }
         } catch (error) {
-            console.error("Email sending failed:", error);
-            alert("Payment successful, but failed to send email.");
+            console.error("Payment initiation failed:", error);
+            alert("Failed to initiate payment.");
         }
     };
+
+
 
     return (
 
