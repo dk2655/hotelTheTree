@@ -30,7 +30,7 @@ function PaymentReview() {
                 body: JSON.stringify({
                     name: storedUserName,
                     email: storedEmail,
-
+                    phone: storedPhone,
                     roomType: storedRoomType,
                     amount: storedRoomPrice
                 })
