@@ -22,7 +22,7 @@ function PaymentReview() {
 
         try {
             // Step 1: Create payment link via Netlify function
-            const response = await fetch('/.netlify/functions/createPayment', {
+            const response = await fetch('/.netlify/functions/createOrder', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
