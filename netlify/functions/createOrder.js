@@ -1,6 +1,8 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-exports.handler = async function (event, context) {
+
+export async function handler(event, context) {
+
     if (event.httpMethod !== "POST") {
         return {
             statusCode: 405,
@@ -29,7 +31,7 @@ exports.handler = async function (event, context) {
             order_amount: amount,
             order_currency: "INR",
             order_note: roomType,
-            return_url: "http://localhost:5173/booking-success?order_id={order_id}",
+            return_url: "http://localhost:5174/booking-success?order_id={order_id}",
             notify_url: "https://hotelthetree.com/webhook"
         })
     });

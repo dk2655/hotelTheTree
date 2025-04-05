@@ -1,4 +1,5 @@
-exports.handler = async (event, context) => {
+export async function handler(event, context) {
+
     const payload = JSON.parse(event.body);
 
     console.log("Received Webhook: ", payload);
