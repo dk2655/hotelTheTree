@@ -11,7 +11,7 @@ function PaymentReview() {
     const storedRoomPrice = localStorage.getItem("roomPrice") || 0;
     const storedUserName = localStorage.getItem("name") || "Guest";
     const storedEmail = localStorage.getItem("email") || "guest@email.com";
-    const storedPhone = localStorage.getItem("phone");
+    const storedPhone = localStorage.getItem("phone") || "9999999999";
 
     const handlePayment = async () => {
         if (!storedPhone) {
