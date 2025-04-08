@@ -49,7 +49,7 @@ function PaymentReview() {
             console.log("Payment Link Response:", result);
             console.log("Available keys in response:", Object.keys(result));
 
-            const paymentLink = result.payment_link || result.payment_link_url;
+            const paymentLink = result?.payments?.url;
 
             if (paymentLink) {
                 await emailjs.send(

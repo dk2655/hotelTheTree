@@ -74,6 +74,7 @@ function BookNow() {
         localStorage.setItem("roomPrice", getRoomPrice());
         localStorage.setItem("name", formData.name);
         localStorage.setItem("email", formData.email);
+        localStorage.setItem("phone", formData.phone)
 
         alert("Booking Successful! Redirecting to payment page.");
 
