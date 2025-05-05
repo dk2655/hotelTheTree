@@ -13,7 +13,7 @@ function BookNow() {
         dob: '',
         email: '',
         phone: '',
-        countryCode: '+91', // Default country code for India
+        countryCode: '+91',
         roomType: '',
     });
 
@@ -48,9 +48,6 @@ function BookNow() {
     };
 
     const handleSubmit = () => {
-        // console.log("handleSubmit function triggered!"); // Debugging log
-
-        // Check if all fields are completely empty
         const isFormEmpty =
             !formData.name &&
             !formData.dob &&
@@ -65,23 +62,25 @@ function BookNow() {
             return;
         }
 
-        // Check if any required field is missing
         if (!formData.name || !formData.dob || !formData.email || !formData.phone || !formData.roomType || !startDate || !endDate) {
             alert("Please fill in all required fields before continuing.");
             return;
         }
+
+        // Store user data
         localStorage.setItem("roomType", formData.roomType);
         localStorage.setItem("roomPrice", getRoomPrice());
         localStorage.setItem("name", formData.name);
         localStorage.setItem("email", formData.email);
-        localStorage.setItem("phone", formData.phone)
+        localStorage.setItem("phone", formData.phone);
+        localStorage.setItem("startDate", startDate);
+        localStorage.setItem("endDate", endDate);
+        localStorage.setItem("adults", adults);
+        localStorage.setItem("children", children);
 
         alert("Booking Successful! Redirecting to payment page.");
-
         navigate('/payment');
     };
-
-
 
     return (
         <div className="relative min-h-screen bg-gray-100 p-6 pb-24">
@@ -163,8 +162,7 @@ function BookNow() {
                 <div className="text-xl font-semibold">Room Price: ₹{getRoomPrice()}</div>
                 <button
                     onClick={handleSubmit}
-                    className="bg-white text-black  px-6 py-3 rounded-lg font-semibold hover:bg-gray-200"
-                // disabled={!formData.roomType}
+                    className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200"
                 >
                     Continue
                 </button>
@@ -178,9 +176,7 @@ function BookNow() {
                 <div className='flex flex-col'>
                     <label className="text-gray-600 p-2 font-semibold">From</label>
                     <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="border border-gray-300 p-2 rounded-md" required />
-
                 </div>
-
                 <div className='flex flex-col'>
                     <label className="text-gray-600 font-semibold">To</label>
                     <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="border border-gray-300 p-2 rounded-md" required />
@@ -193,7 +189,6 @@ function BookNow() {
                             {[...Array(6).keys()].map((num) => <option key={num + 1} value={num + 1}>{num + 1}</option>)}
                         </select>
                     </div>
-
                     <div className="flex flex-col">
                         <label className="text-gray-600 font-semibold">Children</label>
                         <select value={children} onChange={(e) => setChildren(e.target.value)} className="border border-gray-300 p-2 rounded-md" required>
@@ -201,15 +196,9 @@ function BookNow() {
                         </select>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     );
 }
 
 export default BookNow;
-
-
-

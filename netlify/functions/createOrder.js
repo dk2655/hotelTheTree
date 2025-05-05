@@ -11,74 +11,71 @@ export async function handler(event, context) {
         };
     }
 
-    const { name, email, phone, roomType, amount } = JSON.parse(event.body);
-
-    // Sanitize email to generate a valid unique customer_id
-    const sanitizedEmailId = email.replace(/[^a-zA-Z0-9_-]/g, "_");
-    const customerId = `user_${sanitizedEmailId}`;
-    const orderId = "order_" + Math.floor(Math.random() * 100000)
-    const orderPayload = {
-        customer_details: {
-            customer_id: customerId,
-            customer_email: email,
-            customer_phone: phone,
-            customer_name: name,
-        },
-        order_id: orderId,
-        order_amount: Number(amount),
-        order_currency: "INR",
-        order_note: roomType,
-        order_meta: {
-            return_url: `https://hotelthetree.netlify.app/booking-success?order_id=${orderId}`,
-            notify_url: "https://hotelthetree.netlify.app/.netlify/functions/paymentWebhook"
-
-        }
-    };
-
     try {
-        // console.log("Payload being sent to Cashfree:", JSON.stringify(orderPayload, null, 2));
+        const { name, email, phone, roomType, amount } = JSON.parse(event.body);
 
-        const response = await fetch("https://sandbox.cashfree.com/pg/orders", {
+        const sanitizedEmailId = email.replace(/[^a-zA-Z0-9_-]/g, "_");
+        const customerId = `user_${sanitizedEmailId}`;
+        const orderId = `order_${Math.floor(Math.random() * 100000)}`;
+
+        const orderPayload = {
+            customer_details: {
+                customer_id: customerId,
+                customer_email: email,
+                customer_phone: phone,
+                customer_name: name,
+            },
+            order_id: orderId,
+            order_amount: Number(amount),
+            order_currency: "INR",
+            order_note: roomType,
+            order_meta: {
+                return_url: `https://hotelthetree.netlify.app/booking-success?order_id=${orderId}`,
+                notify_url: "https://hotelthetree.netlify.app/.netlify/functions/paymentWebhook",
+            },
+        };
+
+        const response = await fetch("https://api.cashfree.com/pg/orders", {
             method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
-                "x-api-version": "2022-09-01",
+                "x-api-version": "2023-08-01",
                 "x-client-id": process.env.CASHFREE_APP_ID,
                 "x-client-secret": process.env.CASHFREE_SECRET_KEY,
             },
             body: JSON.stringify(orderPayload),
         });
 
+        const rawHeaders = response.headers.raw();
+        const resText = await response.text();
+
         console.log("Status Code:", response.status);
-        console.log("Raw Headers:", response.headers.raw());
+        console.log("Raw Headers:", rawHeaders);
         console.log("Using App ID:", process.env.CASHFREE_APP_ID);
         console.log("Using Secret Key:", process.env.CASHFREE_SECRET_KEY);
 
-        let data;
         if (!response.ok) {
-            const errorText = await response.text();
-            console.error("Cashfree Error Response:", errorText);
+            console.error("Cashfree Error Response:", resText);
             return {
                 statusCode: response.status,
-                body: JSON.stringify({ message: "Cashfree Error", detail: errorText })
+                body: JSON.stringify({ message: "Cashfree Error", detail: resText }),
             };
-        } else {
-            data = await response.json();
         }
 
+        const data = JSON.parse(resText);
         console.log("Cashfree Response JSON:", data);
 
         return {
             statusCode: 200,
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
         };
 
     } catch (error) {
         console.error("Cashfree order creation failed:", error);
         return {
             statusCode: 500,
-            body: JSON.stringify({ message: "Internal Server Error" })
+            body: JSON.stringify({ message: "Internal Server Error", error: error.message }),
         };
     }
-};
+}
