@@ -55,15 +55,28 @@ export async function handler(event, context) {
         console.log("Using App ID:", process.env.CASHFREE_APP_ID);
         console.log("Using Secret Key:", process.env.CASHFREE_SECRET_KEY);
 
-        if (!response.ok) {
-            console.error("Cashfree Error Response:", resText);
+        let data;
+        try {
+            data = JSON.parse(resText);
+        } catch (jsonErr) {
+            console.error("Invalid JSON from Cashfree:", resText);
             return {
-                statusCode: response.status,
-                body: JSON.stringify({ message: "Cashfree Error", detail: resText }),
+                statusCode: 500,
+                body: JSON.stringify({
+                    message: "Invalid JSON from Cashfree",
+                    raw: resText,
+                }),
             };
         }
 
-        const data = JSON.parse(resText);
+        if (!response.ok) {
+            console.error("Cashfree Error Response:", data);
+            return {
+                statusCode: response.status,
+                body: JSON.stringify({ message: "Cashfree Error", detail: data }),
+            };
+        }
+
         console.log("Cashfree Response JSON:", data);
 
         return {
