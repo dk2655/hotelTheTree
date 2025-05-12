@@ -48,6 +48,7 @@ function PaymentReview() {
             });
 
             const result = await response.json();
+            console.log("Create Order API Response:", result);
             const paymentSessionId = result?.payment_session_id;
 
             if (!paymentSessionId) {
