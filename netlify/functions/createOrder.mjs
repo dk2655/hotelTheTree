@@ -1,4 +1,3 @@
-
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -14,10 +13,9 @@ export async function handler(event, context) {
     try {
         const { name, email, phone, roomType, amount } = JSON.parse(event.body);
 
-        // Sanitize email and generate orderId
         const sanitizedEmailId = email.replace(/[^a-zA-Z0-9_-]/g, "_");
         const customerId = `user_${sanitizedEmailId}`;
-        const orderId = `order_${Date.now()}`;  // Using timestamp for unique orderId
+        const orderId = `order_${Math.floor(Math.random() * 100000)}`;
 
         const orderPayload = {
             customer_details: {
@@ -36,7 +34,7 @@ export async function handler(event, context) {
             },
         };
 
-        // Make request to Cashfree API
+        // ✅ Using native fetch (Node 18+)
         const response = await fetch("https://api.cashfree.com/pg/orders", {
             method: "POST",
             headers: {
@@ -49,19 +47,12 @@ export async function handler(event, context) {
             body: JSON.stringify(orderPayload),
         });
 
-        // Log raw headers and status code for debugging
-        const rawHeaders = response.headers.raw();
         const resText = await response.text();
 
-        console.log("Status Code:", response.status);
-        console.log("Raw Headers:", rawHeaders);
-
-        // Parse the response
         let data;
         try {
             data = JSON.parse(resText);
         } catch (jsonErr) {
-            console.error("Invalid JSON from Cashfree:", resText);
             return {
                 statusCode: 500,
                 body: JSON.stringify({
@@ -72,30 +63,18 @@ export async function handler(event, context) {
         }
 
         if (!response.ok) {
-            console.error("Cashfree Error Response:", data);
             return {
                 statusCode: response.status,
                 body: JSON.stringify({ message: "Cashfree Error", detail: data }),
             };
         }
 
-        // Ensure the response contains the payment session ID
-        if (!data.payment_session_id) {
-            return {
-                statusCode: 400,
-                body: JSON.stringify({ message: "Payment session ID missing from Cashfree response" }),
-            };
-        }
-
-        console.log("Cashfree Response JSON:", data);
-
         return {
             statusCode: 200,
-            body: JSON.stringify({ payment_session_id: data.payment_session_id }),
+            body: JSON.stringify(data),
         };
 
     } catch (error) {
-        console.error("Cashfree order creation failed:", error);
         return {
             statusCode: 500,
             body: JSON.stringify({ message: "Internal Server Error", error: error.message }),
