@@ -33,7 +33,7 @@ function PaymentReview() {
             setLoading(true);
 
             // Create order and retrieve payment session ID from serverless function
-            const response = await fetch('/api/createOrder', {
+            const response = await fetch('https://hotelthetree.com/api/createOrder', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
