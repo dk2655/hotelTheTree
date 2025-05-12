@@ -31,7 +31,8 @@ export async function handler(event, context) {
             order_note: roomType,
             order_meta: {
                 return_url: `https://hotelthetree.netlify.app/booking-success?order_id=${orderId}`,
-                notify_url: "https://hotelthetree.netlify.app/.netlify/functions/paymentWebhook",
+                notify_url: "https://hotelthetree.com/api/paymentWebhook",
+
             },
         };
 
